@@ -1,5 +1,4 @@
-function ReservationForm({ cab }) {
-  const { maxCapacity } = cab;
+function ReservationForm() {
   return (
     <div className="scale-[1.01]">
       <div className="bg-gray-700 text-gray-300 px-16 py-2 flex justify-between items-center">

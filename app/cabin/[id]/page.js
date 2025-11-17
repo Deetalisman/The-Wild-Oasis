@@ -62,7 +62,7 @@ const CabinDetails = ({ params }) => {
       <h1 className="text-center mt-10 text-3xl">
         Reserve {cab.name} today! Pay on arrival.
       </h1>
-      <Reservation cab={cab} />
+      <Reservation />
     </div>
   );
 };

@@ -4,26 +4,16 @@ import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-function isAlreadyBooked(range, datesArr) {
-  return (
-    range.from &&
-    range.to &&
-    datesArr.some((date) =>
-      isWithinInterval(date, { start: range.from, end: range.to })
-    )
-  );
-}
-
-function DateSelector({ cab }) {
+function DateSelector() {
   // CHANGE
-  const { regularPrice, discount } = cab;
+  const { regularPrice, discount } = 20;
   const numNights = 23;
   const cabinPrice = regularPrice;
   //   const range = { from: null, to: null };
 
   // SETTINGS
   const minBookingLength = 1;
-  const { maxcapacity } = cab;
+  const { maxcapacity } = 5;
   const maxBookingLength = maxcapacity;
   const [range, setRange] = useState({ from: undefined, to: undefined });
   return (

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const Reservation = () => {
+const Reservations = () => {
   // const [details, setDetails] = useState([]);
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
@@ -80,4 +80,4 @@ const Reservation = () => {
   );
 };
 
-export default Reservation;
+export default Reservations;

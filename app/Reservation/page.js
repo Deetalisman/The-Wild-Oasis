@@ -1,3 +1,4 @@
+"use client";
 import DateSelector from "../Dateselector/page";
 import ReservationForm from "../Reservationform/page";
 

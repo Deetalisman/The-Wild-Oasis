@@ -15,7 +15,7 @@ export default async function Home() {
         className="object-cover object-top"
       />
       <div className="text-center relative z-10">
-        <p className="text-6xl">Welcome to paradise.</p>
+        <p className="text-4xl md:text-6xl">Welcome to paradise.</p>
         <Link href="/cabin">
           <button className="bg-amber-200 text-sm cursor-pointer px-12 py-4 mt-7 rounded-sm  text-black">
             Explore luxury cabins

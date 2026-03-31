@@ -1,73 +1,78 @@
 "use client";
 import { isWithinInterval } from "date-fns";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
 function DateSelector() {
   // CHANGE
-  const { regularPrice, discount } = 20;
+  const regularPrice = 20;
   const numNights = 23;
   const cabinPrice = regularPrice;
-  //   const range = { from: null, to: null };
-
-  // SETTINGS
   const minBookingLength = 1;
   const { maxcapacity } = 5;
   const maxBookingLength = maxcapacity;
-  const [range, setRange] = useState({ from: undefined, to: undefined });
+  const [range, setRange] = useState();
+  const [bookingData, setBookingData] = useState({
+    nights: 0,
+    totalPrice: 0,
+  });
+  const nights =
+    range?.from && range?.to
+      ? Math.ceil(
+          (range.to.getTime() - range.from.getTime()) / (1000 * 60 * 60 * 24),
+        )
+      : 0;
+  useEffect(() => {
+    setBookingData({
+      nights: nights,
+      totalPrice: nights * regularPrice,
+    });
+    const night = JSON.parse(localStorage.getItem("night")) || [];
+    const price = JSON.parse(localStorage.getItem("price")) || [];
+    localStorage.setItem("night", JSON.stringify(nights));
+    // if (totalPrice) {
+    localStorage.setItem("price", JSON.stringify(regularPrice));
+    // }
+    console.log(nights);
+    const totalPrice = nights * regularPrice;
+    console.log(totalPrice);
+  }, [nights, regularPrice]);
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
         className="pt-0 flex flex-row text-sm place-self-center"
-        onClick={setRange}
+        onSelect={setRange}
         mode="range"
-        selected={range}
-        min={minBookingLength + 1}
-        max={maxBookingLength}
-        fromMonth={new Date()}
         fromDate={new Date()}
-        toYear={new Date().getFullYear() + 5}
+        selected={range}
+        min={minBookingLength}
+        max={maxBookingLength}
         captionLayout="dropdown"
         numberOfMonths={1}
+        disabled={{ before: new Date() }}
       />
 
-      <div className="flex items-center justify-between px-8 bg-amber-500 text-gray-800 h-[72px]">
+      <div className="flex items-center md:mx-0 sm:mx-[10%] mx-[2.7%] justify-center sm:px-[4%] lg:px-8 bg-amber-500 text-gray-800 h-[72px]">
         <div className="flex items-baseline gap-6">
-          <p className="flex gap-2 items-baseline">
-            {discount > 0 ? (
-              <>
-                <span className="text-2xl">{regularPrice - discount}</span>
-                <span className="line-through font-semibold text-primary-700">
-                  {regularPrice}
-                </span>
-              </>
-            ) : (
-              <span className="text-2xl">{regularPrice}</span>
-            )}
+          <p className="flex gap-2 text-lg font-bold items-baseline">
+            £{regularPrice}
             <span className="">/night</span>
           </p>
-          {numNights ? (
+          {nights ? (
             <>
-              <p className="bg-accent-600 px-3 py-2 text-2xl">
-                <span>&times;</span> <span>{numNights}</span>
+              <p className="bg-accent-600  py-2 text-2xl">
+                <span>&times;</span> {nights}
               </p>
               <p>
                 <span className="text-lg font-bold uppercase">Total</span>{" "}
-                <span className="text-2xl font-semibold">{cabinPrice}</span>
+                <span className="text-2xl ml-2 font-semibold">
+                  £{regularPrice * nights}
+                </span>
               </p>
             </>
           ) : null}
         </div>
-
-        {range.from || range.to ? (
-          <button
-            className="border border-gray-800 py-2 px-4 text-sm font-semibold"
-            onClick={() => resetRange()}
-          >
-            Clear
-          </button>
-        ) : null}
       </div>
     </div>
   );

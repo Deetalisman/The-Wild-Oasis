@@ -21,6 +21,7 @@ const Login = () => {
       router.push("/account");
       setSignin(false);
       localStorage.setItem("username", JSON.stringify(name));
+      localStorage.setItem("useremail", JSON.stringify(email));
       setErrors(false);
     }
   };

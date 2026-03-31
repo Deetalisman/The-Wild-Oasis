@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import about1 from "../about/about-1.jpg";
 import about2 from "../about/about-2.jpg";
 export const metadata = {
@@ -74,14 +75,11 @@ const About = () => {
             is like coming home.
           </p>
 
-          <div>
-            <a
-              href="/cabins"
-              className="inline-block mt-4 bg-amber-500 px-8 py-4 text-gray-800 text-sm font-semibold hover:bg-accent-600 transition-all"
-            >
-              Explore our luxury cabins
-            </a>
-          </div>
+          <Link href="/cabin">
+            <button className="bg-amber-200 text-sm cursor-pointer px-12 py-4 mt-7 rounded-sm  text-black">
+              Explore luxury cabins
+            </button>
+          </Link>
         </div>
       </div>
     </div>

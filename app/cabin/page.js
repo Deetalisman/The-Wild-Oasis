@@ -14,7 +14,7 @@ const Cabin = () => {
   };
   const handlethreeguest = () => {
     const threecabin = CabinsData.filter(
-      (item) => (item.maxCapacity >= "2") & (item.maxCapacity <= "3")
+      (item) => (item.maxCapacity >= "2") & (item.maxCapacity <= "3"),
     );
     setCabins(threecabin);
     console.log(threecabin);
@@ -22,7 +22,7 @@ const Cabin = () => {
   };
   const handlefourguest = () => {
     const fourcabin = CabinsData.filter(
-      (item) => (item.maxCapacity >= "4") & (item.maxCapacity <= "7")
+      (item) => (item.maxCapacity >= "4") & (item.maxCapacity <= "7"),
     );
     setCabins(fourcabin);
     console.log(fourcabin);
@@ -88,7 +88,7 @@ const Cabin = () => {
       {cabins.length > 0 && (
         <div className="grid sm:grid-cols-1 mt-7 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
           {cabins.map((cabin) => (
-            <div key={cabin.id} className="flex border-2 border-gray-800">
+            <div key={cabin.id} className="flex  border-2 border-gray-800">
               <Image
                 src={cabin.image}
                 alt={cabin.name}
@@ -108,14 +108,14 @@ const Cabin = () => {
                       guests.
                     </p>
                   </div>
-                  <p className="text-right mt-3 text-gray-300 text-sm">
+                  <p className="xl:ml-[60%] lg:ml-[40%] ml-[18%] mt-3 text-gray-300 text-sm">
                     <span className="  text-3xl">{cabin.regularPrice}</span> /
                     night
                   </p>
                 </div>
-                <div className="border-t-2 flex border-gray-800 mt-6">
+                <div className="border-t-2 flex  border-gray-800 mt-6">
                   <p className="w-[0] lg:w-[30%] xl:w-[40%]"></p>
-                  <div className="border-l-2 flex w-70 pl-2 xl:pl-2 text-gray-300 hover:bg-amber-300 hover:text-black cursor-pointer text-[0.75rem] lg:text-sm py-3 border-gray-800 ">
+                  <div className="border-l-2 h-[3rem] flex xl:w-[60%] w-[100%] lg:w-[70%] pl-2 xl:pl-2 text-gray-300 hover:bg-amber-300 hover:text-black cursor-pointer text-[0.75rem] lg:text-sm py-3 border-gray-800 ">
                     <Link href={`cabin/${cabin.id}`} className="flex">
                       Details & reservations
                       <FaArrowRightLong className="mt-1 ml-2 text-gray-500" />

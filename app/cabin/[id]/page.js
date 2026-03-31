@@ -1,5 +1,5 @@
 "use client";
-import { use } from "react";
+import { use, useEffect } from "react";
 import Image from "next/image";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
@@ -14,20 +14,21 @@ const CabinDetails = ({ params }) => {
   const cab = CabinsData.find((item) => item.id === id);
   console.log(cab);
   const router = useRouter();
+
   return (
     <div className="pb-10">
       <FaCircleArrowLeft
         onClick={() => router.back()}
         className="text-xl text-amber-400 cursor-pointer"
       />
-      <div className="flex justify-between">
+      <div className="md:flex justify-between">
         <Image
           src={cab.image}
           alt={cab.name}
           width={500}
-          className="h-130 object-cover rounded-tl-3xl rounded-br-3xl object-top w-[40%] mt-8"
+          className="h-130 object-cover md:mx-0 sm:mx-[10%] mx-[5%] rounded-tl-3xl rounded-br-3xl object-top sm:w-[80%] w-[90%] md:w-[40%] mt-8"
         />
-        <div className="w-[50%] mt-15 text-gray-300">
+        <div className="w-[100%] md:w-[50%] mt-15 text-gray-300">
           <h1 className="text-5xl font-bold text-gray-200">{cab.name}</h1>
           <p className="mt-5 tracking-wide">
             {cab.description} {cab.name}. {cab.fulldescription}
@@ -44,7 +45,9 @@ const CabinDetails = ({ params }) => {
             <FaLocationDot className="mr-2 text-gray-500 mt-1 text-lg" />
             <p className="text-gray-300 ">
               Located in the heart of the{" "}
-              <span className="font-bold text-[1.2rem]">{cab.location}</span>{" "}
+              <span className="font-bold text-[1.2rem]">
+                {cab.location}
+              </span>{" "}
             </p>
           </div>
           <div className="text-[1rem] mt-4 flex">
@@ -59,10 +62,10 @@ const CabinDetails = ({ params }) => {
           </div>
         </div>
       </div>
-      <h1 className="text-center mt-10 text-3xl">
+      <h1 className="text-center mt-10 text-xl sm:text-2xl lg:text-3xl">
         Reserve {cab.name} today! Pay on arrival.
       </h1>
-      <Reservation />
+      <Reservation cab={cab} />
     </div>
   );
 };

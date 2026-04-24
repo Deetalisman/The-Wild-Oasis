@@ -32,8 +32,11 @@ const Header = () => {
           The Wild Oasis.
         </Link>
       </aside>
-      {/* <Navigation /> */}
-      <div className="text-4xl cursor-pointer" onClick={handledisplay}>
+      <Navigation />
+      <div
+        className="sm:hidden block text-5xl cursor-pointer"
+        onClick={handledisplay}
+      >
         =
       </div>
       {nav && (

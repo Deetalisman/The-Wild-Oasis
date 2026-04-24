@@ -8,6 +8,7 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [nationality, setNationality] = useState("");
   const [nationalID, setNationalID] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("submitted");
@@ -42,7 +43,7 @@ const Profile = () => {
         <Profileform
           handleSubmit={handleSubmit}
           email={email}
-          name={name}
+          // name={name}
           setName={setName}
           setEmail={setEmail}
           setNationalID={setNationalID}
@@ -59,7 +60,7 @@ export default Profile;
 
 const Profileform = ({
   setEmail,
-  setName,
+  // setName,
   setNationalID,
   setNationality,
   name,
@@ -69,7 +70,7 @@ const Profileform = ({
   nationality,
 }) => {
   return (
-    <div>
+    <div className="pb-10">
       <h2 className="font-semibold text-2xl text-amber-400 mb-2">
         Update your guest profile
       </h2>
@@ -88,7 +89,7 @@ const Profileform = ({
             type="text"
             onChange={(e) => setName(e.target.value)}
             value={name}
-            className="px-5 py-3 bg-gray-600 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
+            className="px-5 py-1 mt-1 bg-gray-600 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
           />
         </div>
 
@@ -97,8 +98,10 @@ const Profileform = ({
           <input
             type="email"
             // onChange={(e) => setEmail(e.target.value)}
+            placeholder={email}
             value={email}
-            className="px-5 py-3 bg-gray-600 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
+            disabled
+            className="px-5 py-1 mt-1  bg-gray-600 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
           />
         </div>
 
@@ -111,7 +114,7 @@ const Profileform = ({
             id="nationality"
             onChange={(e) => setNationality(e.target.value)}
             value={nationality}
-            className="px-5 py-3 bg-gray-700 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-5 py-2 mt-1 bg-gray-700 text-primary-800 w-full shadow-sm rounded-sm"
           >
             <option>Asia</option>
             <option>Europe</option>
@@ -128,14 +131,14 @@ const Profileform = ({
             name="nationalID"
             onChange={(e) => setNationalID(e.target.value)}
             value={nationalID}
-            className="px-5 py-3 bg-gray-700 text-gray-200 w-full shadow-sm rounded-sm"
+            className="px-5 py-1 mt-1 bg-gray-700 text-gray-200 w-full shadow-sm rounded-sm"
           />
         </div>
 
         <div className="flex justify-end items-center gap-6">
           <button
             type="submit"
-            className="bg-amber-500 text-sm px-8 py-3 text-gray-800 cursor-pointer font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
+            className="bg-amber-500 text-sm mb-4 rounded-2xl px-8 py-3 text-gray-800 cursor-pointer font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
           >
             Update profile
           </button>

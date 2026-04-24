@@ -71,7 +71,7 @@ const Loginpage = ({
       >
         <label>Name</label>
         <input
-          className="bg-gray-400 p-3 text-black  mt-1 w-[20rem]"
+          className="bg-gray-400 p-3 text-black  rounded-lg  mt-1 w-[20rem]"
           placeholder="name"
           id="name"
           type="text"
@@ -80,7 +80,7 @@ const Loginpage = ({
         />
         <label className="mt-4">Email</label>
         <input
-          className="bg-gray-400 p-3 text-black  mt-1 w-[20rem]"
+          className="bg-gray-400 p-3 text-black rounded-lg  mt-1 w-[20rem]"
           placeholder="email"
           type="text"
           id="email"
@@ -92,7 +92,7 @@ const Loginpage = ({
         )}
         <button
           type="submit"
-          className="mt-6 cursor-pointer  justify-center flex border-1 border-gray-900 py-2  w-[10rem] bg-gray-700"
+          className="mt-6 cursor-pointer rounded-lg  justify-center flex border-1 border-gray-900 py-2  w-[10rem] bg-gray-700"
         >
           <FcGoogle className="text-2xl" />
           <span className="ml-2 ">Sign in</span>

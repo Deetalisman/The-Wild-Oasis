@@ -13,7 +13,7 @@ const Navigation = () => {
     }
   };
   return (
-    <div>
+    <div className="sm:block hidden">
       <ul className="flex text-gray-300 justify-between mt-3 w-[15rem]">
         <li>
           <Link className="hover:text-amber-200" href="/cabin">

@@ -12,6 +12,12 @@ export default function ReservationForm({ cab }) {
   useEffect(() => {
     const name = JSON.parse(localStorage.getItem("username")) || [];
     setNameofuser(name);
+    console.log(name);
+    if (nameofuser === "") {
+      setloggedIn(true);
+    } else {
+      setloggedIn(false);
+    }
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,7 +66,7 @@ export default function ReservationForm({ cab }) {
   return (
     <div className="scale-[1.01] md:mx-0 sm:mx-[10%] mx-[2.7%] md:mt-0  mt-[3rem]">
       <div className="bg-gray-700 text-gray-300 px-16 py-2 flex justify-between items-center">
-        {nameofuser === "" ? (
+        {!loggedIn ? (
           <p>You need to sign in first</p>
         ) : (
           <p>
@@ -111,7 +117,7 @@ export default function ReservationForm({ cab }) {
 
         <div className="flex justify-end mt-5 items-center gap-6">
           {verify && <p className="text-red-300 text-base">Select dates</p>}
-          {!nameofuser && (
+          {!loggedIn && (
             <p className="text-red-300 text-base">Sign in to book</p>
           )}
           <button

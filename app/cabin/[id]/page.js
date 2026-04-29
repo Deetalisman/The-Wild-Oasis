@@ -29,8 +29,10 @@ const CabinDetails = ({ params }) => {
           className="h-130 object-cover md:mx-0 sm:mx-[10%] mx-[5%] rounded-tl-3xl rounded-br-3xl object-top sm:w-[80%] w-[90%] md:w-[40%] mt-8"
         />
         <div className="w-[100%] md:w-[50%] mt-15 text-gray-300">
-          <h1 className="text-5xl font-bold text-gray-200">{cab.name}</h1>
-          <p className="mt-5 tracking-wide">
+          <h1 className=" text-3xl md:text-5xl font-bold text-gray-200">
+            {cab.name}
+          </h1>
+          <p className="mt-5 text-sm text-gray-400 tracking-wide sm:text-xltracking-wide">
             {cab.description} {cab.name}. {cab.fulldescription}
           </p>
           <div className="text-[1rem] mt-10 flex">

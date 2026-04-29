@@ -28,7 +28,11 @@ const Header = () => {
     <div className=" pt-10 relative z-10 flex justify-between">
       <aside className="flex">
         <Image src={logo} alt="logo" width={80} />
-        <Link href="/" className="mt-3 text-gray-300 hover:text-amber-200">
+        <Link
+          href="/"
+          className="mt-3 text-gray-300 hover:text-amber-200"
+          onClick={handleclose}
+        >
           The Wild Oasis.
         </Link>
       </aside>
@@ -40,7 +44,7 @@ const Header = () => {
         =
       </div>
       {nav && (
-        <div className="absolute -right-8 top-0 z-10 h-[100vh] w-[11rem] pl-10 pt-10 backdrop-blur-2xl">
+        <div className="absolute -right-8 top-0 z-100 h-[100vh] w-[11rem] pl-10 pt-10 backdrop-blur-2xl">
           <div
             className="text-2xl mr-5 hover:text-4xl float-end cursor-pointer"
             onClick={handleclose}

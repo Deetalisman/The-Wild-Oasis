@@ -71,11 +71,11 @@ const Profileform = ({
 }) => {
   return (
     <div className="pb-10">
-      <h2 className="font-semibold text-2xl text-amber-400 mb-2">
+      <h2 className="font-semibold text-lg sm:text-2xl text-amber-400 mb-2">
         Update your guest profile
       </h2>
 
-      <p className="text-[1rem] mb-7 text-gray-400">
+      <p className="text-[0.9rem] sm:text-[1rem] mb-7 text-gray-400">
         Providing the following information will make your check-in process
         faster and smoother. See you soon!
       </p>
@@ -138,7 +138,7 @@ const Profileform = ({
         <div className="flex justify-end items-center gap-6">
           <button
             type="submit"
-            className="bg-amber-500 text-sm mb-4 rounded-2xl px-8 py-3 text-gray-800 cursor-pointer font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
+            className="bg-amber-500 text-[0.8rem] sm:text-sm mb-4 rounded-2xl px-4 sm:px-8 py-2 sm:py-3 text-gray-800 cursor-pointer font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
           >
             Update profile
           </button>

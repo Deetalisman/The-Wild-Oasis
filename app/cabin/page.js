@@ -36,10 +36,10 @@ const Cabin = () => {
   };
   return (
     <div className="mt-15 pb-10">
-      <h1 className="text-4xl mb-5 text-amber-400 font-medium">
+      <h1 className="text-3xl md:text-4xl mb-5 text-amber-400 font-medium">
         Our Luxury Cabins
       </h1>
-      <p className="text-gray-300 text-[1rem] mb-10">
+      <p className="text-gray-300 text-[0.9rem] sm:text-[1rem] mb-10">
         Cozy yet luxurious cabins, located right in the heart of the Italian
         Dolomites. Imagine waking up to beautiful mountain views, spending your
         days exploring the dark forests around, or just relaxing in your private

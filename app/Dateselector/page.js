@@ -28,11 +28,14 @@ function DateSelector() {
       nights: nights,
       totalPrice: nights * regularPrice,
     });
+    // const checkIn = range?.from.toISOString();
     const night = JSON.parse(localStorage.getItem("night")) || [];
     const price = JSON.parse(localStorage.getItem("price")) || [];
+    // const checkin = JSON.parse(localStorage.getItem("check")) || [];
     localStorage.setItem("night", JSON.stringify(nights));
     // if (totalPrice) {
     localStorage.setItem("price", JSON.stringify(regularPrice));
+    // localStorage.setItem("checkin", JSON.stringify(checkIn));
     // }
     console.log(nights);
     const totalPrice = nights * regularPrice;

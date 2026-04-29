@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       >
         <div className=" text-white bg-[#0f101f] min-h-[100vh] px-[5%] lg:px-[8%] xl:px-[14%] relative z-10">
           <Header />
-          <main className=" mt-10">{children}</main>
+          <main className=" mt-4 sm:mt-10">{children}</main>
         </div>
       </body>
     </html>

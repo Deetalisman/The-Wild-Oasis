@@ -10,7 +10,7 @@ const Account = () => {
 
   return (
     <div>
-      <p className="text-amber-300 text-2xl">Welcome {nameofuser}!</p>
+      <p className="text-amber-300 mt-10 text-2xl">Welcome {nameofuser}!</p>
       <p className="text-sm text-gray-400">To paradise, your save haven</p>
 
       <p className="mt-6">

@@ -64,10 +64,10 @@ const Loginpage = ({
   errors,
 }) => {
   return (
-    <div className="absolute flex  align-middle mt-[10%]  z-10 -top-10 w-[120%] -left-53 h-[60vh] bg-[#0f101f]">
+    <div className="absolute flex  align-middle mt-[10%]  ml-7  top-10  sm:-top-10 w-[120%] -left-53 h-[60vh] bg-[#0f101f]">
       <form
         onSubmit={handleSubmit}
-        className="flex-col h-fit  bg-gray-500 p-5 px-10 rounded-lg ml-[40%]  flex"
+        className="flex-col h-fit  bg-gray-500 p-5 px-7 sm:px-10 rounded-lg ml-[40%]  flex"
       >
         <label>Name</label>
         <input

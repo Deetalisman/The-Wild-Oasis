@@ -9,6 +9,8 @@ export default function ReservationForm({ cab }) {
   const [observation, setObservation] = useState("");
   const [verify, setVerify] = useState(false);
   const [loggedIn, setloggedIn] = useState(false);
+  const [booked, setBooked] = useState(false);
+  const [exist, setExist] = useState(false);
   useEffect(() => {
     const name = JSON.parse(localStorage.getItem("username")) || [];
     setNameofuser(name);
@@ -24,6 +26,7 @@ export default function ReservationForm({ cab }) {
     if (nameofuser != "") {
       setloggedIn(true);
       console.log("logged in");
+      console.log(cab);
       const cabinName = cab.name;
       const cabinImage = cab.image;
       console.log(cabinName);
@@ -35,6 +38,8 @@ export default function ReservationForm({ cab }) {
       }
       if (night.length !== 0) {
         const price = JSON.parse(localStorage.getItem("price")) || [];
+        const checkInDate = JSON.parse(localStorage.getItem("checkin")) || [];
+        console.log(checkInDate);
         const bookingInfo = {
           id: Date.now(),
           numGuests,
@@ -48,14 +53,44 @@ export default function ReservationForm({ cab }) {
         setVerify(false);
         const reservation =
           JSON.parse(localStorage.getItem("resavation")) || [];
-        // setObser(reservation);
+        const reservationExists = (newBooking, reservations) => {
+          return reservations.some(
+            (res) =>
+              res.cabinName === newBooking.cabinName &&
+              res.night === newBooking.night,
+          );
+        };
+
+        if (reservationExists(bookingInfo, reservation)) {
+          function showMessages() {
+            setExist(true);
+            console.log("book");
+
+            setTimeout(() => {
+              setExist(false);
+            }, 3000); // 3 seconds
+          }
+
+          showMessages();
+          return false;
+        }
         const updatedDetail = [...reservation, bookingInfo];
         console.log(updatedDetail);
         localStorage.setItem("resavation", JSON.stringify(updatedDetail));
-        alert("cabin booked....");
+        // alert("cabin booked....");
         // form.reset();
         setObservation("");
         setNumGuests("");
+        function showMessage() {
+          setBooked(true);
+          console.log("book");
+
+          setTimeout(() => {
+            setBooked(false);
+          }, 3000); // 3 seconds
+        }
+
+        showMessage();
       }
     } else {
       setloggedIn(false);
@@ -119,6 +154,14 @@ export default function ReservationForm({ cab }) {
           {verify && <p className="text-red-300 text-base">Select dates</p>}
           {!loggedIn && (
             <p className="text-red-300 text-base">Sign in to book</p>
+          )}
+          {booked && (
+            <p className="text-xl text-amber-500 ">Cabin booked....</p>
+          )}
+          {exist && (
+            <p className="text-[1rem] text-amber-500 ">
+              Reservation already exist...
+            </p>
           )}
           <button
             type="submit"

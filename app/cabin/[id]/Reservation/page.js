@@ -1,7 +1,7 @@
 "use client";
 
-import DateSelector from "../Dateselector/page";
-import ReservationForm from "../Reservationform/page";
+import DateSelector from "./Dateselector/page";
+import ReservationForm from "./Reservationform/page";
 
 export default function Reservation({ cab }) {
   return (

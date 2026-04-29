@@ -38,8 +38,8 @@ export default function ReservationForm({ cab }) {
       }
       if (night.length !== 0) {
         const price = JSON.parse(localStorage.getItem("price")) || [];
-        const checkInDate = JSON.parse(localStorage.getItem("checkin")) || [];
-        console.log(checkInDate);
+        // const checkInDate = JSON.parse(localStorage.getItem("checkin")) || [];
+        // console.log(checkInDate);
         const bookingInfo = {
           id: Date.now(),
           numGuests,

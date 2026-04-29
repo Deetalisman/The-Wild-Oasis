@@ -4,7 +4,6 @@ import Image from "next/image";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
-import Reservation from "./Reservation/page";
 import { CabinsData } from "../../Api/api";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
@@ -229,7 +228,7 @@ function ReservationForm({ cab }) {
 
             setTimeout(() => {
               setExist(false);
-            }, 3000); 
+            }, 3000);
           }
 
           showMessages();

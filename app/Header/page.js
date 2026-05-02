@@ -29,7 +29,7 @@ const Header = () => {
     setNav(false);
   };
   return (
-    <div className="pt-10 relative z-10 flex justify-between">
+    <div className="pt-3 md:pt-7 relative z-10 flex justify-between">
       <aside className="flex">
         <Image src={logo} alt="logo" width={80} />
         <Link

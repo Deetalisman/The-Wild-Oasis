@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default async function Home() {
   return (
-    <div className="flex items-center h-fit mt-36 md:mt-48 px-[10%] lg:px-[20%] justify-center">
+    <div className="flex items-center  mt-36 md:mt-48 px-[10%] lg:px-[20%] justify-center">
       <Image
         src={bg}
         fill

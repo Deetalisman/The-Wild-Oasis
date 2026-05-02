@@ -42,10 +42,12 @@ function SideNavigation() {
         >
           <Link
             href="/account"
-            className="py-3 px-2 sm:px-5 hover:bg-gray-900 hover:text-gray-100 transition-colors flex items-center gap-1 sm:gap-4 font-semibold text-primary-200 "
+            className="py-3 px-2 sm:px-5 hover:bg-gray-800 hover:text-gray-100 transition-colors flex items-center gap-1 sm:gap-4 font-semibold text-primary-200 "
           >
-            <HomeIcon className="h-5 w-5 text-gray-600" />
-            <p>Home</p>
+            <HomeIcon className="h-5 w-5 text-amber-300" />
+            <p className="text-[0.8rem] sm:text-[0.95rem] lg:text-[1rem] text-gray-200">
+              Home
+            </p>
           </Link>
         </li>
         <li
@@ -56,10 +58,12 @@ function SideNavigation() {
         >
           <Link
             href="/account/reservation"
-            className="py-3  px-2 sm:px-5 hover:bg-gray-900 hover:text-gray-100 transition-colors flex items-center gap-1 sm:gap-4 font-semibold text-primary-200"
+            className="py-3  px-2 sm:px-5 hover:bg-gray-800 hover:text-gray-100 transition-colors flex items-center gap-1 sm:gap-4 font-semibold text-primary-200"
           >
-            <CalendarDaysIcon className="h-5 w-5 text-gray-600" />
-            <p>Reservation</p>
+            <CalendarDaysIcon className="h-5 w-5 text-amber-300" />
+            <p className="text-[0.8rem] sm:text-[0.95rem] lg:text-[1rem] text-gray-200">
+              Reservation
+            </p>
           </Link>
         </li>
         <li
@@ -69,11 +73,13 @@ function SideNavigation() {
         >
           <Link
             href="/account/profile"
-            className="py-3  px-2 sm:px-5 hover:bg-gray-900 hover:text-gray-100 transition-colors flex items-center gap-1 sm:gap-4 font-semibold text-primary-200"
+            className="py-3  px-2 sm:px-5 hover:bg-gray-800 hover:text-gray-100 transition-colors flex items-center gap-1 sm:gap-4 font-semibold text-primary-200"
             onClick={handleProfile}
           >
-            <UserIcon className="h-5 w-5 text-gray-600" />
-            <p>Guest</p>
+            <UserIcon className="h-5 w-5 text-amber-300" />
+            <p className="text-[0.8rem] sm:text-[0.95rem] lg:text-[1rem] text-gray-200">
+              Guest
+            </p>
           </Link>
         </li>
 

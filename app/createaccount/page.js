@@ -4,55 +4,45 @@ import { useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-const Login = () => {
+const Createaccount = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [usersdetails, setUsersdetails] = useState({});
   const [errors, setErrors] = useState(false);
-  const [fail, setFail] = useState(false);
+  const [copy, setCopy] = useState(false);
   const router = useRouter();
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(name);
     console.log(email);
-    if (email.trim() === "") {
+    if (name.trim() === "" || email.trim() === "" || password.trim() === "") {
+      console.log("empty");
       setErrors(true);
     } else {
+      setErrors(false);
+      console.log(password);
       const user = {
+        id: Date.now(),
+        name,
         email,
         password,
       };
       console.log(user);
       const users = JSON.parse(localStorage.getItem("users")) || [];
-      setUsersdetails(users);
-      console.log(usersdetails);
-      const userCheck = (newUser, users) => {
+      const userExists = (newUser, users) => {
         return users.some(
-          (res) =>
-            res.email === newUser.email && res.password === newUser.password,
+          (res) => res.name === newUser.name && res.email === newUser.email,
         );
       };
 
-      if (userCheck(user, users)) {
-        console.log("correct");
-        const currentUser = usersdetails.find(
-          (userdetail) => userdetail.email === user.email,
-        );
-        console.log(currentUser);
-
-        const name = currentUser.name;
-        const currentuser =
-          JSON.parse(localStorage.getItem("currentuser")) || [];
-
-        localStorage.setItem("currentuser", JSON.stringify(currentUser));
-        localStorage.setItem("username", JSON.stringify(name));
-        setErrors(false);
-        router.push("/account");
-        setFail(false);
+      if (userExists(user, users)) {
+        setCopy(true);
       } else {
-        setFail(true);
-        console.log("incorrect");
+        const updateUser = [...users, user];
+        console.log(updateUser);
+        localStorage.setItem("users", JSON.stringify(updateUser));
+        localStorage.setItem("username", JSON.stringify(name));
+        router.push("/account");
       }
     }
   };
@@ -62,7 +52,17 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="flex-col h-fit w-fit  py-6  sm:px-10 rounded-lg  flex"
       >
-        <label className="mt-4  text-gray-400">Email</label>
+        <label className="text-[1rem] text-gray-400">Username</label>
+        <input
+          className="bg-gray-500 text-[0.9rem] p-2 text-white  rounded-lg  mt-1 w-"
+          placeholder="Enter a username.."
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <label className="mt-4 text-gray-400">Email</label>
         <input
           className="bg-gray-500 text-[0.9rem] p-2 text-white
            rounded-lg  mt-1 w-[20rem]"
@@ -85,28 +85,25 @@ const Login = () => {
           required
         />
         {errors && (
-          <p className="text-red-300 text-sm float-right">Please fill</p>
-        )}
-        {fail && (
-          <p className="text-red-300 text-[0.8rem] mt-2 text-center float-right">
-            Invalid email or password
+          <p className="text-red-300 mt-2 text-[0.9rem] float-right">
+            Please fill all.
           </p>
         )}
+
         <button
           type="submit"
           className="mt-6 text-[0.9rem] cursor-pointer rounded-lg  justify-center flex border-1 border-gray-900 py-2  w-full bg-gray-700"
         >
-          <span className="ml-2 ">Sign in</span>
+          <span className="ml-2 ">Sign up</span>
         </button>
-        <p className="text-gray-500 mt-2 text-[0.85rem]">
-          No account{" "}
-          <Link
-            href="/createaccount"
-            className="text-gray-300 underline text-[1rem]"
-          >
-            Sign Up
-          </Link>
-        </p>
+        {copy && (
+          <p className="text-red-200 text-[0.85rem] mt-2 text-center float-right">
+            account already exist,{" "}
+            <Link href="/login" className="text-white underline text-[1rem]">
+              Login
+            </Link>
+          </p>
+        )}
       </form>
       <div className="absolute bottom-5 w-[60%] text-gray-500 text-center text-sm">
         <p>
@@ -122,4 +119,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Createaccount;

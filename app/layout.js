@@ -22,9 +22,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className=" text-white bg-[#0f101f] min-h-[100vh] px-[5%] lg:px-[8%] xl:px-[14%] relative z-10">
+        <div className=" text-white bg-[#0f101f] min-h-[100vh] px-[3%] sm:px-[5%] lg:px-[8%] xl:px-[14%] relative z-10">
           <Header />
-          <main className=" mt-4 sm:mt-10">{children}</main>
+          <main className=" mt-4 md:mt-10">{children}</main>
         </div>
       </body>
     </html>

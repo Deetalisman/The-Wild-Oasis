@@ -27,7 +27,7 @@ const Reservations = () => {
   };
   return (
     <div>
-      <h2 className="font-semibold text-lg sm:text-2xl text-amber-400 mb-7">
+      <h2 className="font-semibold text-xl lg:text-2xl text-amber-400 mb-7">
         Your reservations.
       </h2>
 

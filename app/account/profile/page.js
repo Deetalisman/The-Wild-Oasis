@@ -2,54 +2,68 @@
 import { useState, useEffect } from "react";
 
 const Profile = () => {
-  const [profileDetails, setprofileDetails] = useState([]);
-  const [name, setName] = useState("");
+  const [fullname, setFullName] = useState("");
   const [openDetails, setOpenDetails] = useState([]);
   const [email, setEmail] = useState("");
-  const [nationality, setNationality] = useState("");
-  const [nationalID, setNationalID] = useState("");
+  const [address, setAddress] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("submitted");
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const currentuser = JSON.parse(localStorage.getItem("currentuser")) || [];
     const newclient = {
-      name,
-      email,
-      nationalID,
-      nationality,
+      fullname,
+      address,
+      phonenumber,
     };
-    setprofileDetails(newclient);
-    console.log(profileDetails);
-    // openDetails === 1 ? setOpenDetails(2) : setOpenDetails(3);
-    console.log(openDetails);
-    localStorage.setItem("detalee", JSON.stringify(newclient));
+    const updatedUsers = users.map((user) => {
+      if (user.email === currentuser.email && user.name === currentuser.name) {
+        return {
+          ...user,
+          fullname: fullname,
+          phone: phonenumber,
+          address: address,
+        };
+      }
+      return user;
+    });
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    const updatedCurrentUser = {
+      ...currentuser,
+      fullname: fullname,
+      phone: phonenumber,
+      address: address,
+    };
+
+    localStorage.setItem("currentuser", JSON.stringify(updatedCurrentUser));
+    setOpenDetails(updatedCurrentUser);
+    // setprofileDetails(newclient);
+    localStorage.setItem("detalee", JSON.stringify(updatedCurrentUser));
   };
   useEffect(() => {
     const detailList = JSON.parse(localStorage.getItem("detalee")) || [];
     const useremail = JSON.parse(localStorage.getItem("useremail")) || [];
     setOpenDetails(detailList);
     setEmail(useremail);
-    console.log(email);
     console.log(openDetails);
   }, []);
   return (
     <div>
       {openDetails != "" ? (
-        <Displaydetails
-          profileDetails={profileDetails}
-          openDetails={openDetails}
-        />
+        <Displaydetails openDetails={openDetails} email={email} />
       ) : (
         <Profileform
           handleSubmit={handleSubmit}
           email={email}
-          // name={name}
-          setName={setName}
+          setFullName={setFullName}
+          fullname={fullname}
           setEmail={setEmail}
-          setNationalID={setNationalID}
-          setNationality={setNationality}
-          nationality={nationality}
-          nationalID={nationalID}
+          address={address}
+          phonenumber={phonenumber}
+          setAddress={setAddress}
+          setPhonenumber={setPhonenumber}
         />
       )}
     </div>
@@ -60,22 +74,22 @@ export default Profile;
 
 const Profileform = ({
   setEmail,
-  // setName,
-  setNationalID,
-  setNationality,
-  name,
+  setFullName,
+  fullname,
   email,
-  nationalID,
   handleSubmit,
-  nationality,
+  phonenumber,
+  setPhonenumber,
+  address,
+  setAddress,
 }) => {
   return (
     <div className="pb-10">
-      <h2 className="font-semibold text-lg sm:text-2xl text-amber-400 mb-2">
+      <h2 className="font-semibold text-lg lg:text-2xl text-amber-400 mb-2">
         Update your guest profile
       </h2>
 
-      <p className="text-[0.9rem] sm:text-[1rem] mb-7 text-gray-400">
+      <p className="text-[0.9rem] lg:text-[1rem] mb-7 text-gray-400">
         Providing the following information will make your check-in process
         faster and smoother. See you soon!
       </p>
@@ -84,17 +98,18 @@ const Profileform = ({
         className="bg-gray-900 pt-3 px-2 rounded-lg  text-[1rem] flex gap-6 flex-col"
       >
         <div className="space-y-2">
-          <label>Full name</label>
+          <label className="text-[0.85rem] lg:text-[1rem]">Full name</label>
           <input
             type="text"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            onChange={(e) => setFullName(e.target.value)}
+            value={fullname}
+            required
             className="px-5 py-1 mt-1 bg-gray-600 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
           />
         </div>
 
         <div className="space-y-2">
-          <label>Email address</label>
+          <label className="text-[0.85rem] lg:text-[1rem]">Email address</label>
           <input
             type="email"
             // onChange={(e) => setEmail(e.target.value)}
@@ -107,30 +122,31 @@ const Profileform = ({
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label htmlFor="nationality">Where are you from?</label>
+            <label htmlFor="address" className="text-[0.85rem] lg:text-[1rem]">
+              Address
+            </label>
           </div>
-          <select
-            name="nationality"
-            id="nationality"
-            onChange={(e) => setNationality(e.target.value)}
-            value={nationality}
-            className="px-5 py-2 mt-1 bg-gray-700 text-primary-800 w-full shadow-sm rounded-sm"
-          >
-            <option>Asia</option>
-            <option>Europe</option>
-            <option>Africa</option>
-            <option>Australia</option>
-            <option>North Ameria</option>
-            <option>South America</option>
-          </select>
+          <input
+            name="address"
+            onChange={(e) => setAddress(e.target.value)}
+            value={address}
+            required
+            className="px-5 py-1 mt-1 bg-gray-700 text-gray-200 w-full shadow-sm rounded-sm"
+          />
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="nationalID">Phone number</label>
+          <label
+            htmlFor="phonenumber"
+            className="text-[0.85rem] lg:text-[1rem]"
+          >
+            Phone number
+          </label>
           <input
-            name="nationalID"
-            onChange={(e) => setNationalID(e.target.value)}
-            value={nationalID}
+            name="phone number"
+            onChange={(e) => setPhonenumber(e.target.value)}
+            value={phonenumber}
+            required
             className="px-5 py-1 mt-1 bg-gray-700 text-gray-200 w-full shadow-sm rounded-sm"
           />
         </div>
@@ -138,7 +154,7 @@ const Profileform = ({
         <div className="flex justify-end items-center gap-6">
           <button
             type="submit"
-            className="bg-amber-500 text-[0.8rem] sm:text-sm mb-4 rounded-2xl px-4 sm:px-8 py-2 sm:py-3 text-gray-800 cursor-pointer font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
+            className="bg-amber-500 text-[0.8rem] lg:text-sm mb-4 rounded-2xl px-4 lg:px-8 py-2 lg:py-3 text-gray-800 cursor-pointer font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
           >
             Update profile
           </button>
@@ -148,18 +164,29 @@ const Profileform = ({
   );
 };
 
-const Displaydetails = ({ profileDetails, openDetails }) => {
+const Displaydetails = ({ openDetails, email }) => {
   return (
     <div>
       <p className="text-sm">
-        <span className="font-bold text-gray-400 text-lg">
+        <span className="font-bold text-amber-400 text-lg">
           {" "}
-          Hello {openDetails.name},
+          Hello {openDetails.fullname},
         </span>{" "}
       </p>
-      <p className="mt-3">
+      <p className="mt-2 text-sm text-gray-400">
         We now have your details and you are ready to book our cabins...
       </p>
+      <div className="mt-10 text-gray-300">
+        <p className="">
+          Email : <span>{email}</span>
+        </p>
+        <p className="mt-3">
+          Address : <span>{openDetails.address}</span>
+        </p>
+        <p className="mt-3">
+          Contact Number : <span>{openDetails.phone}</span>
+        </p>
+      </div>
     </div>
   );
 };

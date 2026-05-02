@@ -29,7 +29,7 @@ const CabinDetails = ({ params }) => {
           src={cab.image}
           alt={cab.name}
           width={500}
-          className="h-130 object-cover md:mx-0 sm:mx-[10%] mx-[5%] rounded-tl-3xl rounded-br-3xl object-top sm:w-[80%] w-[90%] md:w-[40%] mt-8"
+          className="h-90 md:h-130 object-cover md:mx-0 sm:mx-[10%] mx-[5%] rounded-tl-3xl rounded-br-3xl object-top sm:w-[80%] w-[90%] md:w-[40%] mt-8"
         />
         <div className="w-[100%] md:w-[50%] mt-15 text-gray-300">
           <h1 className=" text-3xl md:text-5xl font-bold text-gray-200">
@@ -198,8 +198,6 @@ function ReservationForm({ cab }) {
       }
       if (night.length !== 0) {
         const price = JSON.parse(localStorage.getItem("price")) || [];
-        // const checkInDate = JSON.parse(localStorage.getItem("checkin")) || [];
-        // console.log(checkInDate);
         const bookingInfo = {
           id: Date.now(),
           numGuests,

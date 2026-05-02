@@ -47,11 +47,14 @@ const Createaccount = () => {
     }
   };
   return (
-    <div className=" bg-[#0f101f] mt-[10vh] flex justify-center items-center">
+    <div className=" bg-[#0f101f] mt-0 flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="flex-col h-fit w-fit  py-6  sm:px-10 rounded-lg  flex"
+        className="flex-col h-fit w-fit mt-0   py-6  sm:px-10 rounded-lg  flex"
       >
+        <h1 className=" text-[0.96rem] lg:text-[1.1rem] text-gray-400 mt-3 mb-10">
+          Sign in or create an account.
+        </h1>
         <label className="text-[1rem] text-gray-400">Username</label>
         <input
           className="bg-gray-500 text-[0.9rem] p-2 text-white  rounded-lg  mt-1 w-"
@@ -96,12 +99,15 @@ const Createaccount = () => {
         >
           <span className="ml-2 ">Sign up</span>
         </button>
+        <p className="mt-1 text-[0.9rem] text-gray-300 lg:text-lg">
+          Existing user?{" "}
+          <Link href="/login" className="text-white underline text-[1rem]">
+            Login
+          </Link>
+        </p>
         {copy && (
           <p className="text-red-200 text-[0.85rem] mt-2 text-center float-right">
-            account already exist,{" "}
-            <Link href="/login" className="text-white underline text-[1rem]">
-              Login
-            </Link>
+            account already exist{" "}
           </p>
         )}
       </form>

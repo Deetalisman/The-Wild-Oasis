@@ -16,7 +16,7 @@ const Header = () => {
     setNav(false);
     const signedIn = JSON.parse(localStorage.getItem("username")) || "";
     if (signedIn === "") {
-      router.push("/signup");
+      router.push("/createaccount");
     } else {
       router.push("/account");
     }

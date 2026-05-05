@@ -8,6 +8,7 @@ const Reservations = () => {
   useEffect(() => {
     const Guestdetail = JSON.parse(localStorage.getItem("resavation")) || [];
     setBookings(Guestdetail);
+    console.log(bookings);
   }, []);
   const handleclear = () => {
     localStorage.setItem("resavation", JSON.stringify([]));
@@ -27,19 +28,19 @@ const Reservations = () => {
   };
   return (
     <div>
-      <h2 className="font-semibold text-xl lg:text-2xl text-amber-400 mb-7">
+      <h2 className="font-semibold text-xl lg:text-2xl text-amber-400 mb-2">
         Your reservations.
       </h2>
 
       {bookings.length === 0 ? (
-        <p className="text-sm sm:text-lg">
+        <p className="text-sm text-gray-500 sm:text-lg">
           You have no reservations yet. Check out our{" "}
-          <Link className="underline text-gray-500" href="/cabin">
+          <Link className="underline text-gray-200 text-lg" href="/cabin">
             luxury cabins &rarr;
           </Link>
         </p>
       ) : (
-        <table className="m-0">
+        <table className="mt-5">
           <thead>
             <tr className="lg:text-[1rem] p-0  text-sm">
               <th className="lg:px-2 md:px-1 px-2 m-0">Cabin</th>
@@ -61,7 +62,7 @@ const Reservations = () => {
                 </td>
                 <button
                   onClick={() => handledelete(booking.id)}
-                  className="text-sm mt-4 bg-amber-500 text-black cursor-pointer rounded-sm px-2"
+                  className="text-[0.8rem] mt-4 bg-amber-500 text-black cursor-pointer rounded-sm px-2"
                 >
                   Delete
                 </button>
@@ -70,7 +71,7 @@ const Reservations = () => {
           ))}
           <button
             onClick={handleclear}
-            className="mt-8 w-[8rem] text-sm mb-14 px-2 text-black py-1 rounded-lg bg-amber-300 cursor-pointer"
+            className="mt-5 w-[8rem] text-[0.8rem] md:text-sm mb-14 px-2 text-black py-1 rounded-lg bg-amber-300 cursor-pointer"
           >
             Clear all bookings
           </button>

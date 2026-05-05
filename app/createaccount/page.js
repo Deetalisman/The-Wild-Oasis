@@ -50,7 +50,7 @@ const Createaccount = () => {
     <div className=" bg-[#0f101f] mt-0 flex justify-center items-center">
       <form
         onSubmit={handleSubmit}
-        className="flex-col h-fit w-fit mt-0   py-6  sm:px-10 rounded-lg  flex"
+        className="flex-col  w-fit mt-0   py-6  sm:px-10 rounded-lg  flex"
       >
         <h1 className=" text-[0.96rem] lg:text-[1.1rem] text-gray-400 mt-3 mb-10">
           Sign in or create an account.
@@ -99,10 +99,10 @@ const Createaccount = () => {
         >
           <span className="ml-2 ">Sign up</span>
         </button>
-        <p className="mt-1 text-[0.9rem] text-gray-300 lg:text-lg">
+        <p className="mt-1 text-[0.9rem] text-gray-500 lg:text-lg">
           Existing user?{" "}
           <Link href="/login" className="text-white underline text-[1rem]">
-            Login
+            Login,
           </Link>
         </p>
         {copy && (

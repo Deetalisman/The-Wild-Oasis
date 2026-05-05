@@ -18,7 +18,7 @@ export default async function Home() {
             {" "}
             Welcome to your perfect getaway.
           </h1>
-          <p className=" text-[0.9rem] md:text-md mt-2">
+          <p className=" text-[0.9rem] text-gray-300 md:text-md mt-2">
             Discover cosy cabins, modern comforts, and unforgettable stays. Book
             your ideal escape with just a few clicks and enjoy a seamless,
             stress‑free experience from start to finish.

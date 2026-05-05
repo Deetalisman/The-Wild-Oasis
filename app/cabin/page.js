@@ -35,11 +35,11 @@ const Cabin = () => {
     setActiveButton("eight");
   };
   return (
-    <div className="mt-15 pb-10">
+    <div className="mt-6 md:mt-10 lg:mt-15 pb-10">
       <h1 className="text-2xl lg:text-3xl  mb-5 text-amber-400 font-medium">
         Our Luxury Cabins
       </h1>
-      <p className="text-gray-300 text-[0.9rem] lg:text-[1rem] mb-10">
+      <p className="text-gray-400 text-[0.9rem] lg:text-[1rem] mb-10">
         Cozy yet luxurious cabins, located right in the heart of the Italian
         Dolomites. Imagine waking up to beautiful mountain views, spending your
         days exploring the dark forests around, or just relaxing in your private

@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { isWithinInterval } from "date-fns";
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
+import Link from "next/link";
 import "react-day-picker/dist/style.css";
 
 const CabinDetails = ({ params }) => {
@@ -137,7 +138,7 @@ function DateSelector() {
         disabled={{ before: new Date() }}
       />
 
-      <div className="flex items-center md:mx-0 sm:mx-[10%] mx-[2.7%] justify-center sm:px-[4%] lg:px-8 bg-amber-500 text-gray-800 h-[72px]">
+      <div className="flex items-center md:mx-0 sm:mx-[10%] mx-[2.7%] justify-center sm:px-[4%] lg:px-8 bg-amber-500 text-gray-800 h-[52px]">
         <div className="flex items-baseline gap-6">
           <p className="flex gap-2 text-lg font-bold items-baseline">
             £{regularPrice}
@@ -311,7 +312,9 @@ function ReservationForm({ cab }) {
         <div className="flex justify-end mt-5 items-center gap-6">
           {verify && <p className="text-red-300 text-base">Select dates</p>}
           {!loggedIn && (
-            <p className="text-red-300 text-base">Sign in to book</p>
+            <Link href="/createaccount">
+              <p className="text-red-300 text-base">Sign in to book</p>
+            </Link>
           )}
           {booked && (
             <p className="text-xl text-amber-500 ">Cabin booked....</p>

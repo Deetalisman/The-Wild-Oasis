@@ -3,15 +3,22 @@ import Image from "next/image";
 import logo from "../Header/logo-light.png";
 import Navigation from "../Navigation/page";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GiWoodCabin } from "react-icons/gi";
 import { IoExtensionPuzzleSharp } from "react-icons/io5";
 import { BiSolidUser } from "react-icons/bi";
+import { FaSignInAlt } from "react-icons/fa";
 
 const Header = () => {
   const router = useRouter();
+  const [signOut, setSignOut] = useState("");
+  const [nav, setNav] = useState(false);
+  useEffect(() => {
+    const name = JSON.parse(localStorage.getItem("username")) || "";
+    setSignOut(name);
+  }, [nav]);
   const handlePage = () => {
     setNav(false);
     const signedIn = JSON.parse(localStorage.getItem("username")) || "";
@@ -21,7 +28,6 @@ const Header = () => {
       router.push("/account");
     }
   };
-  const [nav, setNav] = useState(false);
   const handledisplay = () => {
     setNav(true);
   };
@@ -29,15 +35,15 @@ const Header = () => {
     setNav(false);
   };
   return (
-    <div className="pt-3 md:pt-7 relative z-10 flex justify-between">
+    <div className="pt-3 md:pt-7 relative  z-10 flex justify-between">
       <aside className="flex">
-        <Image src={logo} alt="logo" width={80} />
         <Link
           href="/"
-          className="mt-3 text-gray-100 text-md lg:text-lg hover:text-amber-200"
+          className="mt-3 text-gray-300 flex text-md lg:text-lg hover:text-amber-200"
           onClick={handleclose}
         >
-          The Wild Oasis.
+          <Image src={logo} alt="logo" width={80} />
+          <p className="mt-4 hidden md:block">The Wild Oasis.</p>
         </Link>
       </aside>
       <Navigation />
@@ -67,6 +73,15 @@ const Header = () => {
                 Cabin
               </Link>
             </li>
+
+            <li>
+              <p
+                onClick={handlePage}
+                className="hover:text-amber-200 mt-8 cursor-pointer flex"
+              >
+                <BiSolidUser className="mr-3 text-xl" /> Guest Area
+              </p>
+            </li>
             <li className="mt-8">
               <Link
                 onClick={handleclose}
@@ -77,14 +92,28 @@ const Header = () => {
                 About
               </Link>
             </li>
-            <li>
-              <p
-                onClick={handlePage}
-                className="hover:text-amber-200 mt-8 cursor-pointer flex"
+            <li className="mt-8">
+              <Link
+                onClick={handleclose}
+                className="hover:text-amber-200 flex w-fit"
+                href="/createaccount"
               >
-                <BiSolidUser className="mr-3 text-xl" /> Guest Area
-              </p>
+                <FaSignInAlt className="mr-3 text-xl" />
+                Sign in
+              </Link>
             </li>
+            {signOut !== "" && (
+              <li className="mt-8">
+                <Link
+                  onClick={handleclose}
+                  className="hover:text-amber-200 flex w-fit"
+                  href="/createaccount"
+                >
+                  <FaSignInAlt className="mr-3 text-xl" />
+                  Sign out
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       )}

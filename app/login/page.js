@@ -98,7 +98,7 @@ const Login = () => {
         >
           <span className="ml-2 ">Sign in</span>
         </button>
-        <p className="text-gray-500 mt-2 text-[0.85rem]">
+        <p className="text-gray-500 mt-2 text-[0.9rem]">
           No account{" "}
           <Link
             href="/createaccount"

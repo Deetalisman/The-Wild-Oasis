@@ -7,9 +7,9 @@ export const metadata = {
 };
 const About = () => {
   return (
-    <div className="lg:grid lg:grid-cols-5 pb-10 mt-15 lg:mt-20 gap-x-24 lg:gap-y-32 text-lg items-center">
+    <div className="lg:grid lg:grid-cols-5 pb-10 mt-6 md:mt-15 lg:mt-20 gap-x-24 lg:gap-y-32 text-lg items-center">
       <div className="col-span-3">
-        <h1 className=" text-xl lg:text-4xl mb-10 text-amber-300 font-medium">
+        <h1 className=" text-xl lg:text-4xl mb-4 mb:mb-10 text-amber-300 font-medium">
           Welcome to The Wild Oasis
         </h1>
 
@@ -54,7 +54,7 @@ const About = () => {
       </div>
 
       <div className="col-span-3">
-        <h1 className="text-xl lg:text-3xl mb-10 mt-10 text-amber-400 font-medium">
+        <h1 className="text-xl lg:text-3xl mb-4 mb:mb-10 mt-10 text-amber-400 font-medium">
           Managed by our family since 1962
         </h1>
 

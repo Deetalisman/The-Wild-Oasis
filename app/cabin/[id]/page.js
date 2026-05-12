@@ -12,6 +12,11 @@ import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import Link from "next/link";
 import "react-day-picker/dist/style.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const CabinDetails = ({ params }) => {
   const { id } = use(params);
@@ -26,12 +31,33 @@ const CabinDetails = ({ params }) => {
         className="text-xl text-amber-400 cursor-pointer"
       />
       <div className="md:flex justify-between">
-        <Image
+        {/* <Image
           src={cab.image}
+          j
           alt={cab.name}
           width={500}
           className="h-90 md:h-130 object-cover md:mx-0 sm:mx-[10%] mx-[5%] rounded-tl-3xl rounded-br-3xl object-top sm:w-[80%] w-[90%] md:w-[40%] mt-8"
-        />
+        /> */}
+        <Swiper
+          modules={[Pagination, Navigation]}
+          spaceBetween={20}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          navigation
+          className="sm:w-[80%] w-[90%] md:w-[40%] mt-8"
+        >
+          {cab.images.map((img, index) => (
+            <SwiperSlide key={index}>
+              <Image
+                src={img}
+                alt={`${cab.name} image ${index + 1}`}
+                width={550}
+                height={700}
+                className="h-90 md:h-130 object-cover md:mx-0 sm:mx-[10%] mx-[3%]  rounded-tl-3xl rounded-br-3xl object-top w-full"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
         <div className="w-[100%] md:w-[50%] mt-15 text-gray-300">
           <h1 className=" text-3xl md:text-5xl font-bold text-gray-200">
             {cab.name}

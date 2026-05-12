@@ -34,6 +34,10 @@ const Header = () => {
   const handleclose = () => {
     setNav(false);
   };
+  const handlecloses = () => {
+    localStorage.removeItem("username");
+    setNav(false);
+  };
   return (
     <div className="pt-3 md:pt-7 relative  z-10 flex justify-between">
       <aside className="flex">
@@ -92,20 +96,23 @@ const Header = () => {
                 About
               </Link>
             </li>
-            <li className="mt-8">
-              <Link
-                onClick={handleclose}
-                className="hover:text-amber-200 flex w-fit"
-                href="/createaccount"
-              >
-                <FaSignInAlt className="mr-3 text-xl" />
-                Sign in
-              </Link>
-            </li>
-            {signOut !== "" && (
+            {signOut === "" && (
               <li className="mt-8">
                 <Link
                   onClick={handleclose}
+                  className="hover:text-amber-200 flex w-fit"
+                  href="/createaccount"
+                >
+                  <FaSignInAlt className="mr-3 text-xl" />
+                  Sign in
+                </Link>
+              </li>
+            )}
+
+            {signOut !== "" && (
+              <li className="mt-8">
+                <Link
+                  onClick={handlecloses}
                   className="hover:text-amber-200 flex w-fit"
                   href="/createaccount"
                 >

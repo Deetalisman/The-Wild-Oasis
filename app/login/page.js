@@ -62,6 +62,10 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="flex-col h-fit w-fit  py-6  sm:px-10 rounded-lg  flex"
       >
+        <h1 className=" text-[1rem] lg:text-[1.1rem] text-center text-amber-300 mt-3 mb-7">
+          Login
+        </h1>
+
         <label className="mt-4  text-gray-400">Email</label>
         <input
           className="bg-gray-500 text-[0.9rem] p-2 text-white
@@ -98,7 +102,7 @@ const Login = () => {
         >
           <span className="ml-2 ">Sign in</span>
         </button>
-        <p className="text-gray-500 mt-2 text-[0.9rem]">
+        <p className="text-gray-500 mt-3 text-[0.9rem]">
           No account{" "}
           <Link
             href="/createaccount"
@@ -108,7 +112,7 @@ const Login = () => {
           </Link>
         </p>
       </form>
-      <div className="absolute bottom-5 w-[60%] text-gray-500 text-center text-sm">
+      <div className="absolute bottom-5 w-[60%] text-gray-500 text-center text-[0.85rem]">
         <p>
           By signing in or creating an account, you agree with our{" "}
           <span className="text-gray-300">

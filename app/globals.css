@@ -33,3 +33,24 @@ body {
   border-right-color: theme("colors.gray.200");
   animation: rotate 1s infinite linear;
 }
+/* navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.4);
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 9999px;
+}
+
+/* arrow icon size */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+/* pagination dots */
+.swiper-pagination-bullet {
+  background: white !important;
+}

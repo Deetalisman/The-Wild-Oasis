@@ -7,7 +7,7 @@ const Navigation = () => {
   const handlePage = () => {
     const signedIn = JSON.parse(localStorage.getItem("username")) || "";
     if (signedIn === "") {
-      router.push("/signup");
+      router.push("/createaccount");
     } else {
       router.push("/account");
     }

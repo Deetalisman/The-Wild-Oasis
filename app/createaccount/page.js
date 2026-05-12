@@ -27,6 +27,7 @@ const Createaccount = () => {
         email,
         password,
       };
+      users.push(user);
       console.log(user);
       const users = JSON.parse(localStorage.getItem("users")) || [];
       const userExists = (newUser, users) => {
@@ -52,12 +53,12 @@ const Createaccount = () => {
         onSubmit={handleSubmit}
         className="flex-col  w-fit mt-0   py-6  sm:px-10 rounded-lg  flex"
       >
-        <h1 className=" text-[0.96rem] lg:text-[1.1rem] text-gray-400 mt-3 mb-10">
+        <h1 className=" text-[1rem] lg:text-[1.1rem] text-amber-300 mt-3 mb-10">
           Sign in or create an account.
         </h1>
         <label className="text-[1rem] text-gray-400">Username</label>
         <input
-          className="bg-gray-500 text-[0.9rem] p-2 text-white  rounded-lg  mt-1 w-"
+          className="bg-gray-500 text-[0.85rem] p-2 text-white  rounded-lg  mt-1 w-"
           placeholder="Enter a username.."
           id="name"
           type="text"
@@ -67,7 +68,7 @@ const Createaccount = () => {
         />
         <label className="mt-4 text-gray-400">Email</label>
         <input
-          className="bg-gray-500 text-[0.9rem] p-2 text-white
+          className="bg-gray-500 text-[0.85rem] p-2 text-white
            rounded-lg  mt-1 w-[20rem]"
           placeholder="Enter your email.."
           type="text"
@@ -78,7 +79,7 @@ const Createaccount = () => {
         />
         <label className="mt-4 text-gray-400">Password</label>
         <input
-          className="bg-gray-500 text-[0.9rem] p-2 text-white
+          className="bg-gray-500 text-[0.85rem] p-2 text-white
            rounded-lg  mt-1 w-[20rem]"
           placeholder="min 8 letters"
           type="password"
@@ -99,7 +100,7 @@ const Createaccount = () => {
         >
           <span className="ml-2 ">Sign up</span>
         </button>
-        <p className="mt-1 text-[0.9rem] text-gray-500 lg:text-lg">
+        <p className="mt-3 text-[0.9rem] text-gray-500 lg:text-lg">
           Existing user?{" "}
           <Link href="/login" className="text-white underline text-[1rem]">
             Login,
@@ -111,7 +112,7 @@ const Createaccount = () => {
           </p>
         )}
       </form>
-      <div className="absolute bottom-5 w-[60%] text-gray-500 text-center text-sm">
+      <div className="absolute bottom-5 w-[60%] text-gray-500 text-center text-[0.85rem]">
         <p>
           By signing in or creating an account, you agree with our{" "}
           <span className="text-gray-300">

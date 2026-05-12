@@ -90,7 +90,7 @@ const Cabin = () => {
           {cabins.map((cabin) => (
             <div key={cabin.id} className="flex  border-2 border-gray-800">
               <Image
-                src={cabin.image}
+                src={cabin.images[0]}
                 alt={cabin.name}
                 width={150}
                 className="h-50 object-cover object-top"
